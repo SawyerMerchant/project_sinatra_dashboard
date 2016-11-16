@@ -8,3 +8,4 @@ gem "guard-rspec", "~> 4.7.3"
 gem "mechanize"
 gem "sinatra"
 gem "thin"
+gem 'activesupport'

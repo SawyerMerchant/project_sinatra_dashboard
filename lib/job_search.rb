@@ -2,14 +2,30 @@ require_relative 'parse_dice'
 require_relative 'parse_indeed'
 require 'csv'
 
-Job = Struct.new(:title, :link, :desc, :company, :company_url, :location, :date)
+Job = Struct.new(:title,
+                 :link,
+                 :desc,
+                 :company,
+                 :company_url,
+                 :location,
+                 :date)
 
 class JobSearch
+  include Enumerable
+  attr_accessor :job_arr
 
   def initialize(term, location = nil)
+    @job_arr = []
     scrapers = [ParseDice.new(term, location),ParseIndeed.new(term, location)]
     create_job_array(run_scrapers(scrapers))
   end
+
+  def each(&block)
+    @job_arr.each do | job |
+      block.call(job)
+    end
+  end
+
 
   def run_scrapers(scrapers)
     results = []
@@ -30,9 +46,8 @@ class JobSearch
   end
 
   def create_job_array(results)
-    job_arr = []
     results.compact.uniq.each do |result|
-      job_arr << Job.new(result[:title],
+      @job_arr << Job.new(result[:title],
                         result[:link],
                         result[:desc],
                         result[:company],
@@ -40,11 +55,14 @@ class JobSearch
                         result[:location],
                         result[:date])
     end
-    job_arr
+    @job_arr
   end
 
 
 end
 
 
-dice = JobSearch.new( 'Developer', '33613' )
+# dice = JobSearch.new( 'Developer', '33613' )
+# dice.each do |j|
+#   p j
+# end

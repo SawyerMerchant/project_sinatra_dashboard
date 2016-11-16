@@ -7,9 +7,9 @@ class ParseDice < WebScraper
     @term = term
     @location = "-l-#{location}-radius-30" if location
   end
-
+ # changed limit per page from 120 to 30
   def build_url(page)
-    "https://www.dice.com/jobs/jtype-Full\%20Time-q-#{@term}#{@location}-startPage-#{page}-limit-120-jobs.html"
+    "https://www.dice.com/jobs/jtype-Full\%20Time-q-#{@term}#{@location}-startPage-#{page}-limit-30-jobs.html"
   end
 
   def organize(results)
@@ -35,4 +35,3 @@ class ParseDice < WebScraper
 
 
 end
-

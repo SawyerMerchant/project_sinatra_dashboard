@@ -16,12 +16,13 @@ class WebScraper
   def build_url
     raise NotImplementedError("Methods Need to be defined by subclass")
   end
-
+  # decresed sleep from 1 second to 0.5 second
+  # commented out line 25 to just return one page of each scrape
   def search(page = 1)
-    sleep(1)
+    sleep(0.5)
     puts build_url(page)
     results = organize(agent.get(build_url(page)))
-    results << search(page + 1) if results.length > 0
+    #results << search(page + 1) if results.length > 0
   end
 
   def calculate_date(date_string)
@@ -43,5 +44,3 @@ class WebScraper
 
 
 end
-
-
