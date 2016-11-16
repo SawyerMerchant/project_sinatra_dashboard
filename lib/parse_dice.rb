@@ -25,7 +25,7 @@ class ParseDice < WebScraper
       company_url = company["href"]
       location = result.search("li.location")[0].text.strip
       posting_date = result.search("li.posted")[0].text.strip
-      posting_date = calculate_date(posting_date).strftime("%Y_%m_%d %l %p") if posting_date
+      posting_date = calculate_date(posting_date)#.strftime("%Y_%m_%d %l %p") if posting_date
       #job_id = result.search("input")[0]
       jobs << {title: title, link: link, desc: short_desc, company: company_name, company_url: company_url, location: location, date: posting_date}
     end

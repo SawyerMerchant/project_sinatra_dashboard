@@ -7,7 +7,10 @@ require_relative 'lib/job_search'
 # homepage allows user to search for keyword and a location
 
 get "/" do
-  term = params[:term] || "developer"
-  JobSearch.new(term)
-  erb :index
+  term = params[:term] || "ruby"
+  location = params[:location] || "33603"
+
+  jobs = JobSearch.new(term, location)
+
+  erb :index, locals:{jobs: jobs}
 end
