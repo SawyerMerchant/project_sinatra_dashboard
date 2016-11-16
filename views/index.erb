@@ -1,35 +1,38 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <form class="navbar-form navbar-left" role="search">
+  <div class="container-fluid">
+    <form class="navbar-form navbar-left" role="search" action="/" method="post">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
+        <input type="text" name="term" class="form-control" placeholder="Keyword">
+        <input type="text" name="location" class="form-control" placeholder="Zip Code">
       </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default">Search</button>
   </form>
   </div>
 </nav>
 
-<form action="/" method="post">
-  <input type="text" name="term" placeholder="Keyword">
-  <input type="text" name="location" placeholder="Zip Code">
-  <input type="submit" name="Search">
-</form>
-
-<table>
-  <tr>
-    <th>Job Title</th>
-    <th>Description</th>
-    <th>Company Name</th>
-    <th>Location</th>
-    <th>Post Date</th>
-  </tr>
-  <% jobs.each do |job| %>
-  <tr>
-    <td><a href="<%= job.link %>"><%= job.title %></td>
-    <td><%= job.desc %></td>
-    <td><a href="<%= job.company_url %>"><%= job.company %></td>
-    <td><%= job.location %></td>
-    <td><%= job.date %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="panel panel-default">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Job Title</th>
+        <th>Description</th>
+        <th>Company Name</th>
+        <th>Location</th>
+        <th>Post Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% jobs.each do |job| %>
+      <tr>
+        <td><a href="<%= job.link %>"><%= job.title %></td>
+        <td><%= job.desc %></td>
+        <td><a href="<%= job.company_url %>"><%= job.company %></td>
+        <td><%= job.location %></td>
+        <td><%= job.date %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
