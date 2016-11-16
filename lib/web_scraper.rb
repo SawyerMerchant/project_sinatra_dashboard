@@ -38,7 +38,7 @@ class WebScraper
     when /week/
       arr[0].weeks.ago
     when /month/
-      # arr[0].month.ago
+      arr[0].month.ago
     end
   end
 

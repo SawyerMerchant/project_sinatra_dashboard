@@ -14,3 +14,12 @@ get "/" do
 
   erb :index, locals:{jobs: jobs}
 end
+
+post "/" do
+  term = params[:term] || "ruby"
+  location = params[:location] || "33603"
+
+  jobs = JobSearch.new(term, location)
+
+  erb :index, locals:{jobs: jobs}
+end

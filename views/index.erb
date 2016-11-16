@@ -1,22 +1,35 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  </div>
+</nav>
+
+<form action="/" method="post">
+  <input type="text" name="term" placeholder="Keyword">
+  <input type="text" name="location" placeholder="Zip Code">
+  <input type="submit" name="Search">
+</form>
+
 <table>
   <tr>
-    <th>Title</th>
-    <th>Job Link</th>
+    <th>Job Title</th>
     <th>Description</th>
     <th>Company Name</th>
-    <th>Company URL</th>
     <th>Location</th>
     <th>Post Date</th>
   </tr>
   <% jobs.each do |job| %>
   <tr>
-    <td><%= job.title %></td>
-    <td><a href="<%= job.link %>"</td>
+    <td><a href="<%= job.link %>"><%= job.title %></td>
     <td><%= job.desc %></td>
-    <td><%= job.company %></td>
-    <td><%= job.company_url %></td>
+    <td><a href="<%= job.company_url %>"><%= job.company %></td>
     <td><%= job.location %></td>
     <td><%= job.date %></td>
   </tr>
-
   <% end %>
+</table>
