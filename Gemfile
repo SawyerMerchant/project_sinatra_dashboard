@@ -9,3 +9,4 @@ gem "mechanize"
 gem "sinatra"
 gem "thin"
 gem 'activesupport'
+gem 'httparty'

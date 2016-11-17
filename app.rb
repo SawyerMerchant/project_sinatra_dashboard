@@ -4,15 +4,15 @@ require 'thin'
 require 'open-uri'
 require_relative 'lib/job_search'
 require 'json'
-require 'pry'
-require 'pry-byebug'
+require 'net/http'
 
 
 # homepage allows user to search for keyword and a location
-# file_contents = open('local-file.txt') { |f| f.read }
-get "/" do
-  ip = JSON.parse(`curl freegeoip.net/json/`)
-  location = ip["zip_code"] || ip["city"] || ip["region_name"]
+  get "/" do
+  ip = request.ip
+  ip_info = JSON.parse(Net::HTTP.get("freegeoip.net", "/json/#{ip}"))
+
+  location = ip_info["zip_code"] || ip_info["city"] || ip_info["region_name"]
   term = "developer"
 
   jobs = JobSearch.new(term, location)

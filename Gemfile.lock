@@ -34,6 +34,8 @@ GEM
       guard-compat (~> 1.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -55,6 +57,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
+    multi_xml (0.5.5)
     nenv (0.3.0)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
@@ -116,6 +119,7 @@ DEPENDENCIES
   guard (~> 2.14)
   guard-rspec (~> 4.7.3)
   guard-shell (~> 0.7.1)
+  httparty
   mechanize
   rspec (~> 3.5.0)
   sinatra
